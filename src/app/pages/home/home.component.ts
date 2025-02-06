@@ -11,8 +11,13 @@ export class HomeComponent implements OnInit {
   public olympics$: Observable<any> = of(null);
 
   constructor(private olympicService: OlympicService) {}
+  chartData : any[] = [];
 
   ngOnInit(): void {
+
     this.olympics$ = this.olympicService.getOlympics();
+
+    console.log('données récupérées: :' + this.olympics$);
+  
   }
 }
