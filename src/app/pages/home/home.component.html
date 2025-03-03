@@ -1,3 +1,69 @@
-<h2>Olympic games app</h2>
-<hr />
-<p>{{ (olympics$ | async)?.length }} data loaded</p>
+<!-- src/app/home/home.component.html-->
+<!-- <div *ngIf="olympics$ | async as olympics; else loading">
+    <div *ngFor="let country of olympics">
+      <h3>{{ country.country }}</h3>
+      <ul>
+        <li *ngFor="let participation of country.participations">
+                <strong>{{ participation.year }}></strong> -
+                <span>{{ participation.city }}</span> :
+                {{ participation.medalsCount }} medals,
+                {{ participation.athleteCount }} athletes
+            </li>
+        </ul>
+
+    </div>
+</div> -->
+<!-- <ngx-charts-bar-vertical
+[view]="[700, 400]"
+[scheme]="colorScheme"
+[results]="chartData"
+[gradient]="true"
+[xAxis]="true"
+[yAxis]="true"
+[legend]="true"
+[showXAxisLabel]="true"
+[showYAxisLabel]="true"
+xAxisLabel="Pays"
+yAxisLabel="Médailles"
+>
+</ngx-charts-bar-vertical> -->
+
+<div class="page-container">
+
+    <div class="content">
+        <div class="title-box">
+            <h2>Medals per Country</h2>
+            <div class="subtitle-container">
+                <div class="subtitle-box">
+                    <span class="subtitle-label">Number Of Countries</span>
+                    <span class="subtitle-value">{{olympicsCountryCount}}</span>
+                </div>
+                <div class="subtitle-box">
+                    <span class="subtitle-label">Number Of JO</span>
+                    <span class="subtitle-value">{{ olympicsYearsCount}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="chart-container">
+        
+        <ngx-charts-pie-chart
+        [view]="[700, 400]"
+        [scheme]="colorScheme"
+        [results]="chartData"
+        [gradient]="true"
+        [legend]="true"
+        [labels]="true"
+        [doughnut]="false"
+        (select) = "onCountrySelect($event)"
+        />
+    </div>
+    
+    
+    
+    <ng-template #loading>
+        <p>Loading data...</p>
+    </ng-template>
+</div>
